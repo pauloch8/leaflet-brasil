@@ -4,8 +4,8 @@
         <script src="leaflet/leaflet-src.js"></script>
         <style>
             #map { 
-                width: 550px;
-                height: 550px; 
+                width: 1500px;
+                height: 850px; 
             }
         </style>
     </head>
@@ -14,7 +14,7 @@
     </body>
     <script>
 
-        var map = L.map('map', {
+        const map = L.map('map', {
             // zoomControl: false,
             // dragging: false,
             // doubleClickZoom: false,
@@ -25,41 +25,41 @@
 
         (async function carregarMapa(){
 
-            await carregarGeoJSON("./br-states.json", {weight: 3});
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-11-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-12-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-13-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-14-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-15-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-16-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-17-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-21-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-22-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-23-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-24-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-25-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-26-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-27-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-28-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-29-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-31-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-32-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-33-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-35-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-41-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-42-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-43-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-50-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-51-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-52-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-53-mun.json");
-            // await carregarGeoJSON("./geodata-br/geojson/geojs-100-mun.json");
+            await carregarGeoJSON("./data/geojson/br-states.json", {weight: 3});
+            await carregarGeoJSON("./data/geojson/geojs-11-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-12-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-13-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-14-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-15-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-16-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-17-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-21-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-22-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-23-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-24-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-25-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-26-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-27-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-28-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-29-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-31-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-32-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-33-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-35-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-41-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-42-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-43-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-50-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-51-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-52-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-53-mun.json");
+            await carregarGeoJSON("./data/geojson/geojs-100-mun.json");
 
             // Tile do OpenStreetMap
-            //
-            // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            // }).addTo(map);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
             // Tile não sei de onde
             // var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png').addTo(map);
@@ -75,8 +75,8 @@
 
         class UoFeature{
             type = "Feature";
-            constructor(uo, latitude, longitude){
-                this.properties = {uo};
+            constructor(uo, nome, latitude, longitude){
+                this.properties = {uo, nome};
                 this.geometry = {
                     type: "Point",
                     coordinates: [longitude, latitude]
@@ -87,18 +87,20 @@
         class UoFeatureFactory{
             static fromSdc(registro){
                 const uo = registro.dados.codigoUO;
+                const nome = registro.dados.nome;
                 const latitude =  Number(registro.dados.latitude.replace(',','.'));
                 const longitude = Number(registro.dados.longitude.replace(',','.'));
                 if(!uo || !latitude || !longitude){
                     throw new Error("Dados inválidos");
                 }
-                return new UoFeature(uo, latitude, longitude);
+                return new UoFeature(uo, nome, latitude, longitude);
             }
         }
 
 
         (async function carregarAps(){
-            const bancoSdc = await (await fetch('./exemplo_sdc.json')).json();
+
+            const bancoSdc = await (await fetch('./data/tb0700/SR_GEX_APS.json')).json();
 
             const uoFeatures = [];
             bancoSdc.forEach(registro => {
@@ -109,8 +111,26 @@
                     console.error(e.message, {registro});
                 }
             });
+            
 
-            L.geoJSON(uoFeatures).addTo(map);
+            L.geoJSON(uoFeatures, {
+                onEachFeature: function(feature, layer) {
+                    let popupContent = `APS ${feature.properties.uo} - ${feature.properties.nome}`;
+
+                    layer.bindPopup(popupContent);
+                },
+                pointToLayer: function(feature, latlng) {
+                    return L.circleMarker(latlng, {
+                        radius: 8,
+                        fillColor: "#3a98fe",
+                        color: "#0a68b8",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    });
+                }
+            }).addTo(map);
+
         })();
     </script>
 </html>
