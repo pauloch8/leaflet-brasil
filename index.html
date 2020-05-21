@@ -1,12 +1,7 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-            crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin="">
-        </script>
+        <link rel="stylesheet" href="leaflet/leaflet.css" />
+        <script src="leaflet/leaflet-src.js"></script>
         <style>
             #map { 
                 width: 550px;
@@ -18,66 +13,109 @@
         <div id="map"></div>
     </body>
     <script>
-        (async function carregar(){
 
-            var map = L.map('map', {
-                // zoomControl: false,
-                // dragging: false,
-                // doubleClickZoom: false,
-                // boxZoom: false
-            });
-            map.setView([-15,-53], 4);
-
-            await carregarGeoJSON("./br-states.json", {weight: 5});
-            await carregarGeoJSON("./geodata-br/geojson/geojs-11-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-12-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-13-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-14-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-15-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-16-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-17-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-21-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-22-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-23-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-24-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-25-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-26-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-27-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-28-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-29-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-31-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-32-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-33-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-35-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-41-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-42-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-43-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-50-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-51-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-52-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-53-mun.json");
-            await carregarGeoJSON("./geodata-br/geojson/geojs-100-mun.json");
-    
-
-            async function carregarGeoJSON(arquivo, style = {weight: 1}){
-                var brStates = await (await fetch(arquivo)).json();
-                L.geoJSON(brStates, style).addTo(map);
-            }
-
-            // const municipios = await (await fetch("./municipios.json")).json();
-            // L.geoJSON(municipios).addTo(map);
-            
+        var map = L.map('map', {
+            // zoomControl: false,
+            // dragging: false,
+            // doubleClickZoom: false,
+            // boxZoom: false
+        });
+        map.setView([-15,-53], 4);
 
 
+        (async function carregarMapa(){
+
+            await carregarGeoJSON("./br-states.json", {weight: 3});
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-11-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-12-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-13-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-14-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-15-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-16-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-17-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-21-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-22-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-23-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-24-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-25-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-26-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-27-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-28-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-29-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-31-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-32-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-33-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-35-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-41-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-42-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-43-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-50-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-51-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-52-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-53-mun.json");
+            // await carregarGeoJSON("./geodata-br/geojson/geojs-100-mun.json");
+
+            // Tile do OpenStreetMap
+            //
             // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             // }).addTo(map);
 
-            var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png').addTo(map);
+            // Tile não sei de onde
+            // var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png').addTo(map);
 
-            // L.marker([51.5, -0.09]).addTo(map)
-            //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-            //     .openPopup();
+
+            async function carregarGeoJSON(arquivo, style = {weight: 0.5}){
+                var dados = await (await fetch(arquivo)).json();
+                L.geoJSON(dados, style).addTo(map);
+            }
+
+        })();
+
+
+        class Feature{
+            type = "Feature";
+            constructor(dados){
+
+                
+                
+                this.
+
+                
+                this.geometry = {
+                    type: "Point",
+                    coordinates: [latitude, longitude]
+                }
+            }
+        }
+
+
+        (async function carregarAps(){
+            const bancoSdc = await (await fetch('./exemplo_sdc.json')).json();
+
+            const features = [];
+            bancoSdc.forEach(registro => {
+                const name = registro.dados.codigoUO;
+                const popupContent = registro.dados.codigoUO;
+                const latitude =  Number(registro.dados.latitude.replace(',','.'));
+                const longitude = Number(registro.dados.longitude.replace(',','.'));
+                if(!latitude || !longitude){
+                    console.log("Sem latitude longitude", {registro});
+                    return;
+                }
+                features.push( {
+                    type : "Feature",
+                    properties : {name, popupContent},
+                    geometry : {
+                        type: "Point",
+                        coordinates: [longitude, latitude]
+                    }
+                } );
+            });
+            console.log(JSON.stringify(features[0]));
+            debugger;
+
+            L.geoJSON(features).addTo(map);
         })();
     </script>
 </html>
