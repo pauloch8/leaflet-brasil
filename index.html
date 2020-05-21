@@ -28,7 +28,7 @@
             });
             map.setView([-15,-53], 4);
 
-            await carregarGeoJSON("./br-states.json");
+            await carregarGeoJSON("./br-states.json", {weight: 5});
             await carregarGeoJSON("./geodata-br/geojson/geojs-11-mun.json");
             await carregarGeoJSON("./geodata-br/geojson/geojs-12-mun.json");
             await carregarGeoJSON("./geodata-br/geojson/geojs-13-mun.json");
@@ -59,9 +59,9 @@
             await carregarGeoJSON("./geodata-br/geojson/geojs-100-mun.json");
     
 
-            async function carregarGeoJSON(arquivo){
+            async function carregarGeoJSON(arquivo, style = {weight: 1}){
                 var brStates = await (await fetch(arquivo)).json();
-                L.geoJSON(brStates).addTo(map);
+                L.geoJSON(brStates, style).addTo(map);
             }
 
             // const municipios = await (await fetch("./municipios.json")).json();
