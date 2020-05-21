@@ -28,8 +28,41 @@
             });
             map.setView([-15,-53], 4);
 
-            const brStates = await (await fetch("./br-states.json")).json();
-            L.geoJSON(brStates).addTo(map);
+            await carregarGeoJSON("./br-states.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-11-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-12-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-13-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-14-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-15-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-16-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-17-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-21-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-22-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-23-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-24-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-25-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-26-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-27-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-28-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-29-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-31-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-32-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-33-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-35-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-41-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-42-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-43-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-50-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-51-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-52-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-53-mun.json");
+            await carregarGeoJSON("./geodata-br/geojson/geojs-100-mun.json");
+    
+
+            async function carregarGeoJSON(arquivo){
+                var brStates = await (await fetch(arquivo)).json();
+                L.geoJSON(brStates).addTo(map);
+            }
 
             // const municipios = await (await fetch("./municipios.json")).json();
             // L.geoJSON(municipios).addTo(map);
