@@ -73,19 +73,26 @@
         })();
 
 
-        class Feature{
+        class UoFeature{
             type = "Feature";
-            constructor(dados){
-
-                
-                
-                this.
-
-                
+            constructor(uo, latitude, longitude){
+                this.properties = {uo};
                 this.geometry = {
                     type: "Point",
-                    coordinates: [latitude, longitude]
+                    coordinates: [longitude, latitude]
+                };
+            }
+        }
+
+        class UoFeatureFactory{
+            static fromSdc(registro){
+                const uo = registro.dados.codigoUO;
+                const latitude =  Number(registro.dados.latitude.replace(',','.'));
+                const longitude = Number(registro.dados.longitude.replace(',','.'));
+                if(!uo || !latitude || !longitude){
+                    throw new Error("Dados inválidos");
                 }
+                return new UoFeature(uo, latitude, longitude);
             }
         }
 
@@ -93,29 +100,17 @@
         (async function carregarAps(){
             const bancoSdc = await (await fetch('./exemplo_sdc.json')).json();
 
-            const features = [];
+            const uoFeatures = [];
             bancoSdc.forEach(registro => {
-                const name = registro.dados.codigoUO;
-                const popupContent = registro.dados.codigoUO;
-                const latitude =  Number(registro.dados.latitude.replace(',','.'));
-                const longitude = Number(registro.dados.longitude.replace(',','.'));
-                if(!latitude || !longitude){
-                    console.log("Sem latitude longitude", {registro});
-                    return;
+                try{
+                    uoFeatures.push( UoFeatureFactory.fromSdc(registro) );
                 }
-                features.push( {
-                    type : "Feature",
-                    properties : {name, popupContent},
-                    geometry : {
-                        type: "Point",
-                        coordinates: [longitude, latitude]
-                    }
-                } );
+                catch(e){
+                    console.error(e.message, {registro});
+                }
             });
-            console.log(JSON.stringify(features[0]));
-            debugger;
 
-            L.geoJSON(features).addTo(map);
+            L.geoJSON(uoFeatures).addTo(map);
         })();
     </script>
 </html>
